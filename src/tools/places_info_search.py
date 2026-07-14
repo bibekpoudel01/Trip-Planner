@@ -92,7 +92,7 @@ def search_transportation(place: str) -> str:
 @tool
 def search_hotels(place: str) -> str:
     """
-    Search for accommodations, hotels, and resorts in a place, including prices per night and ratings.
+    Search for accommodations, hotels, and resorts in a place, including prices per night in available currencies and ratings.
     """
     result = tavily_search_hotels(place)
     return f"Following are the hotels in and around {place}:\n\n{result}"

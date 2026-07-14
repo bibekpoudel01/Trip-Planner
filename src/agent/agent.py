@@ -133,7 +133,6 @@ recommendations). Do not attempt to search for anything further - just
 write the report using only the information provided to you.
 
 Structure the report as follows:
-
 0. Title: Use the title provided in the user message as the report's title.
 1.. Weather Summary:
 Provide the expected weather conditions during the trip duration.
@@ -145,7 +144,9 @@ Include temperature ranges, rain/cloud conditions, and practical packing advice.
    the research data, relevant to the traveler's chosen currency.
 5. Final recommendations and warnings - give general recommendations, and 
    separately flag any safety warnings or travel advisories found in the research.
-Never Hallucinate be  clear about what is based on research and what is a recommendation.
+Note:Never Hallucinate. Be absolutely clear about what is based on the provided research data and what is a general travel recommendation. If data for a specific section is completely missing from the research, omit that section or state that no specific data was found instead of making it up.
+    You must generate an itinerary for EXACTLY the number of days requested by the user.
+
 """
 
 

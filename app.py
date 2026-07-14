@@ -9,17 +9,35 @@ from src.core.planner import TravelPlanner  # noqa: E402
 import logfire
 
 # ---------------------------------------------------------------------------
-# WeasyPrint (PDF export) needs GTK's Pango/Cairo libraries on the host
-# machine. On Windows these aren't bundled with pip and are commonly
-# missing, which raises an OSError at import time. We probe for it here
-# so a missing GTK install disables only the PDF button, not the app.
+# PDF export via Playwright (headless Chromium). No GTK/Pango/Cairo needed,
+# unlike WeasyPrint. It renders the exact same styled HTML we build for the
+# "Styled HTML" download, background and all, then prints it to PDF.
+#
+# Setup (one-time, on the host running this app):
+#   pip install playwright
+#   playwright install chromium
 # ---------------------------------------------------------------------------
 try:
-    from weasyprint import HTML as WeasyHTML
+    from playwright.sync_api import sync_playwright
     PDF_EXPORT_AVAILABLE = True
-except OSError:
-    WeasyHTML = None
+except ImportError:
     PDF_EXPORT_AVAILABLE = False
+
+
+def html_to_pdf_bytes(html_str: str) -> bytes:
+    """Render an HTML string to PDF bytes using headless Chromium."""
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page()
+        page.set_content(html_str, wait_until="networkidle")
+        pdf_bytes = page.pdf(
+            format="A4",
+            print_background=True,  # keeps the dark background instead of printing it white
+            margin={"top": "0.5cm", "bottom": "0.5cm", "left": "0.5cm", "right": "0.5cm"},
+        )
+        browser.close()
+    return pdf_bytes
+
 
 logfire.configure(service_name="wanderly")
 logfire.instrument_pydantic()  # auto-validates TravelPlan, etc.
@@ -168,19 +186,30 @@ st.markdown(
 
     .day-chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
 
+    /* Fixed 3-column grid so there is never a stray/empty 4th tile from
+       flex-wrap leftover space at odd viewport widths. */
     .stat-strip {
-        display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+        margin-bottom: 1rem;
     }
     .stat-box {
-        flex: 1; min-width: 140px;
         background: rgba(255,255,255,0.03);
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 12px;
         padding: 0.8rem 1rem;
         text-align: center;
+        min-width: 0;
     }
     .stat-box .num { font-size: 1.3rem; font-weight: 800; color: #7dd3fc; }
     .stat-box .lbl { font-size: 0.72rem; color: #9db3c2; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* On narrow screens, stack the 3 stat boxes instead of squeezing them
+       (also avoids any leftover-space illusion of an empty box). */
+    @media (max-width: 480px) {
+        .stat-strip { grid-template-columns: 1fr; }
+    }
 
     @media print {
         section[data-testid="stSidebar"] { display: none !important; }
@@ -209,7 +238,9 @@ EMOJI_PATTERN = re.compile(
 
 
 def strip_emoji(text: str) -> str:
-    """Remove emoji/symbol glyphs that crash WeasyPrint's font subsetter."""
+    """Remove emoji/symbol glyphs. Kept for callers that still want a
+    text-safe variant; Playwright/Chromium itself renders emoji fine, so
+    the PDF export path below does not call this."""
     return EMOJI_PATTERN.sub("", text)
 
 
@@ -297,10 +328,14 @@ h1,h2,h3,h4 {{ color:#eef4f8; letter-spacing:-0.01em; }}
 p,li,span,div {{ color:#d7e1ea; }}
 .hero {{ padding:1.2rem 1.4rem; border-radius:16px; background:linear-gradient(135deg,rgba(30,58,74,0.9),rgba(15,23,32,0.9)); border:1px solid rgba(148,197,220,0.18); margin-bottom:1.2rem; }}
 .hero h1 {{ margin:0; font-size:1.6rem; }}
-.stat-strip {{ display:flex; gap:0.8rem; margin-bottom:1rem; }}
-.stat-box {{ flex:1; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:0.7rem 1rem; text-align:center; }}
+
+/* Fixed 3-column grid — matches the on-screen fix, so the exported
+   HTML/PDF never shows a stray empty 4th tile either. */
+.stat-strip {{ display:grid; grid-template-columns:repeat(3, 1fr); gap:0.8rem; margin-bottom:1rem; }}
+.stat-box {{ background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:0.7rem 1rem; text-align:center; min-width:0; }}
 .stat-box .num {{ font-size:1.15rem; font-weight:800; color:#7dd3fc; display:block; }}
 .stat-box .lbl {{ font-size:0.68rem; color:#9db3c2; text-transform:uppercase; letter-spacing:0.04em; }}
+
 .card {{ background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1rem 1.2rem; margin-bottom:0.8rem; break-inside:avoid; }}
 .day-badge {{ display:inline-block; background:linear-gradient(135deg,#38bdf8,#6366f1); color:white; font-weight:700; font-size:0.72rem; padding:0.16rem 0.6rem; border-radius:999px; margin-bottom:0.4rem; }}
 .theme-title {{ font-size:1.05rem; font-weight:700; color:#f2f7fb; margin:0.1rem 0 0.5rem 0; }}
@@ -620,7 +655,7 @@ with dl_col1:
 with dl_col2:
     if PDF_EXPORT_AVAILABLE:
         try:
-            pdf_bytes = WeasyHTML(string=strip_emoji(html_export)).write_pdf()
+            pdf_bytes = html_to_pdf_bytes(html_export)  # no strip_emoji needed, Chromium handles emoji fine
             st.download_button(
                 "⬇️ Download itinerary (PDF)",
                 data=pdf_bytes,
@@ -631,8 +666,4 @@ with dl_col2:
         except Exception as e:
             st.warning(f"PDF export unavailable: {e}")
     else:
-        st.info(
-            "PDF export needs GTK libraries installed on this machine. "
-            "Use the Styled HTML download instead — open it in a browser "
-            "and press Ctrl+P → Save as PDF for the same result."
-        )
+        st.info("Run `pip install playwright && playwright install chromium` to enable PDF export.")

@@ -57,9 +57,12 @@ class TravelPlanner:
             thread_id = thread_id or str(uuid.uuid4())
 
             collect_query = f"""
-                    Research a {days}-day trip to {city}.
+                      Research a trip to {city} for EXACTLY {days} day(s). Do not gather information
+        for more or fewer than {days} day(s).
 
-                    Current date: {today}
+        Current date: {today}
+
+                    
                     Interests: {", ".join(interests)}
                     Travel style: {style}
                     Pace: {pace}
@@ -103,6 +106,7 @@ class TravelPlanner:
             title = title_generator(collect_query)
             report_input = (
                 f"Title: {title}\n\n"
+                f" Your day-by-day itinerary must contain exactly {days} day(s) — no more, no fewer."
                 f"Trip Details:\n"
                 f"- City: {city}\n"
                 f"- Duration: {days} days\n"
