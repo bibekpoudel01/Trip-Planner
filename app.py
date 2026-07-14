@@ -1,13 +1,25 @@
 import html
 import re
 import streamlit as st
-from weasyprint import HTML as WeasyHTML
 
 # ---------------------------------------------------------------------------
 # Adjust this import to match where TravelPlanner actually lives
 # ---------------------------------------------------------------------------
 from src.core.planner import TravelPlanner  # noqa: E402
 import logfire
+
+# ---------------------------------------------------------------------------
+# WeasyPrint (PDF export) needs GTK's Pango/Cairo libraries on the host
+# machine. On Windows these aren't bundled with pip and are commonly
+# missing, which raises an OSError at import time. We probe for it here
+# so a missing GTK install disables only the PDF button, not the app.
+# ---------------------------------------------------------------------------
+try:
+    from weasyprint import HTML as WeasyHTML
+    PDF_EXPORT_AVAILABLE = True
+except OSError:
+    WeasyHTML = None
+    PDF_EXPORT_AVAILABLE = False
 
 logfire.configure(service_name="wanderly")
 logfire.instrument_pydantic()  # auto-validates TravelPlan, etc.
@@ -606,14 +618,21 @@ with dl_col1:
     )
 
 with dl_col2:
-    try:
-        pdf_bytes = WeasyHTML(string=strip_emoji(html_export)).write_pdf()
-        st.download_button(
-            "⬇️ Download itinerary (PDF)",
-            data=pdf_bytes,
-            file_name=f"{file_stub}_itinerary.pdf",
-            mime="application/pdf",
-            use_container_width=True,
+    if PDF_EXPORT_AVAILABLE:
+        try:
+            pdf_bytes = WeasyHTML(string=strip_emoji(html_export)).write_pdf()
+            st.download_button(
+                "⬇️ Download itinerary (PDF)",
+                data=pdf_bytes,
+                file_name=f"{file_stub}_itinerary.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+            )
+        except Exception as e:
+            st.warning(f"PDF export unavailable: {e}")
+    else:
+        st.info(
+            "PDF export needs GTK libraries installed on this machine. "
+            "Use the Styled HTML download instead — open it in a browser "
+            "and press Ctrl+P → Save as PDF for the same result."
         )
-    except Exception as e:
-        st.warning(f"PDF export unavailable: {e}")
