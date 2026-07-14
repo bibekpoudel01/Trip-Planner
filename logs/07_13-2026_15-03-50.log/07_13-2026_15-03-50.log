@@ -1,0 +1,55 @@
+[2026-07-13 15:03:50,764] 31 src.config.config - INFO - CONFIG INITIALIZED
+[2026-07-13 15:03:53,905] 179 src.agent.agent - INFO - Using Postgres checkpointer (pooled)
+[2026-07-13 15:03:53,955] 201 src.agent.agent - INFO - Travel agent initialized (collector + tools-free report agent)
+[2026-07-13 15:04:25,174] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 15:04:25,245] 59 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 15:04:26,138] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:04:31,810] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:04:31,846] 74 src.agent.agent - INFO - Agent turn completed
+[2026-07-13 15:04:31,859] 92 src.core.planner - INFO - Tool Used: get_weather_forecast | Args: {'city': 'Kathmandu, NP', 'days': 4}
+[2026-07-13 15:04:31,870] 92 src.core.planner - INFO - Tool Used: search_hotels | Args: {'place': 'Kathmandu, Nepal'}
+[2026-07-13 15:04:31,873] 92 src.core.planner - INFO - Tool Used: search_attractions | Args: {'place': 'Kathmandu, Nepal'}
+[2026-07-13 15:04:31,876] 92 src.core.planner - INFO - Tool Used: search_restaurants | Args: {'place': 'Kathmandu, Nepal'}
+[2026-07-13 15:04:31,877] 92 src.core.planner - INFO - Tool Used: search_activities | Args: {'place': 'Kathmandu, Nepal'}
+[2026-07-13 15:04:31,885] 92 src.core.planner - INFO - Tool Used: search_transportation | Args: {'place': 'Kathmandu, Nepal'}
+[2026-07-13 15:04:31,887] 92 src.core.planner - INFO - Tool Used: search_foods | Args: {'place': 'Kathmandu, Nepal'}
+[2026-07-13 15:04:31,889] 92 src.core.planner - INFO - Tool Used: final_recommendation | Args: {'query': 'Kathmandu travel recommendations June 2026'}
+[2026-07-13 15:04:31,890] 92 src.core.planner - INFO - Tool Used: convert_currency | Args: {'amount': '100', 'from_currency': 'USD', 'to_currency': 'NPR'}
+[2026-07-13 15:04:31,891] 33 src.core.planner - WARNING - Tool output truncated: 1502 chars -> 1500 chars
+[2026-07-13 15:04:32,476] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:04:32,821] 59 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 15:04:32,943] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 15:04:32,945] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 4.000000 seconds
+[2026-07-13 15:04:39,003] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:04:39,019] 74 src.agent.agent - INFO - Agent turn completed
+[2026-07-13 15:04:40,826] 134 src.core.planner - INFO - Generating structured TravelPlan
+[2026-07-13 15:04:43,319] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:22:07,165] 1785 asyncio - ERROR - Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Bibek\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Bibek\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+[2026-07-13 15:22:52,583] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 15:22:52,599] 59 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 15:22:53,433] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:22:57,880] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:22:57,898] 74 src.agent.agent - INFO - Agent turn completed
+[2026-07-13 15:22:57,902] 92 src.core.planner - INFO - Tool Used: get_weather_forecast | Args: {'city': 'Mumbai, IN', 'days': 4}
+[2026-07-13 15:22:57,903] 92 src.core.planner - INFO - Tool Used: search_hotels | Args: {'place': 'Mumbai, IN'}
+[2026-07-13 15:22:57,903] 92 src.core.planner - INFO - Tool Used: search_attractions | Args: {'place': 'Mumbai, IN'}
+[2026-07-13 15:22:57,904] 92 src.core.planner - INFO - Tool Used: search_restaurants | Args: {'place': 'Mumbai, IN'}
+[2026-07-13 15:22:57,905] 92 src.core.planner - INFO - Tool Used: search_activities | Args: {'place': 'Mumbai, IN'}
+[2026-07-13 15:22:57,906] 92 src.core.planner - INFO - Tool Used: search_transportation | Args: {'place': 'Mumbai, IN'}
+[2026-07-13 15:22:57,906] 92 src.core.planner - INFO - Tool Used: search_foods | Args: {'place': 'Mumbai, IN'}
+[2026-07-13 15:22:57,910] 92 src.core.planner - INFO - Tool Used: final_recommendation | Args: {'query': 'Mumbai travel recommendations June 2026'}
+[2026-07-13 15:22:57,911] 92 src.core.planner - INFO - Tool Used: convert_currency | Args: {'amount': '1000', 'from_currency': 'USD', 'to_currency': 'INR'}
+[2026-07-13 15:22:57,911] 92 src.core.planner - INFO - Tool Used: convert_currency | Args: {'amount': '500', 'from_currency': 'EUR', 'to_currency': 'INR'}
+[2026-07-13 15:22:58,353] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:22:58,678] 59 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 15:23:00,815] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 15:23:00,832] 74 src.agent.agent - INFO - Agent turn completed
+[2026-07-13 15:23:02,695] 134 src.core.planner - INFO - Generating structured TravelPlan
+[2026-07-13 15:23:04,616] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

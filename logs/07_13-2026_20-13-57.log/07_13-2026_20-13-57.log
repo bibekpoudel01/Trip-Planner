@@ -1,0 +1,21 @@
+[2026-07-13 20:13:57,934] 31 src.config.config - INFO - CONFIG INITIALIZED
+[2026-07-13 20:14:00,917] 178 src.agent.agent - INFO - Using Postgres checkpointer (pooled)
+[2026-07-13 20:14:00,933] 200 src.agent.agent - INFO - Travel agent initialized (collector + tools-free report agent)
+[2026-07-13 20:14:22,719] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 20:14:22,768] 59 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 20:14:24,201] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:14:30,883] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:14:35,434] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:14:37,055] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:14:37,055] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 21.000000 seconds
+[2026-07-13 20:14:59,127] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:15:01,011] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:15:01,011] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 47.000000 seconds
+[2026-07-13 20:15:49,328] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:15:51,349] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 413 Payload Too Large"
+[2026-07-13 20:15:51,349] 110 src.agent.agent - ERROR - Error in collector_agent: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01kegvdmd4fphvsnk7tyvnkash` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12047, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[2026-07-13 20:15:51,349] 148 src.core.planner - ERROR - Failed to generate itinerary
+Traceback (most recent call last):
+  File "D:\TripNepal\src\core\planner.py", line 77, in create_itinerary
+    raise RuntimeError(f"Collector agent failed: {collected['error']}")
+RuntimeError: Collector agent failed: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01kegvdmd4fphvsnk7tyvnkash` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12047, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}

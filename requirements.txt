@@ -1,0 +1,56 @@
+# ============================================================
+# AI Travel Nepal Planner — requirements.txt
+# Core: LangChain v1 agents + Pydantic + Streamlit
+# Adds: RAG (Chroma + Semantic Chunker + HuggingFace Embeddings)
+# ============================================================
+
+# ---- Core LangChain (v1.x agent framework: create_agent, AgentMiddleware) ----
+langchain
+langchain-core
+langgraph
+
+# ---- LLM Provider ----
+langchain-groq
+groq>=0.15.0
+
+# ---- Community tools (GoogleSerperAPIWrapper, misc utilities) ----
+langchain-community>=0.4.0
+
+# ---- Search tools ----
+google-search-results>=2.4.2   # backs Serper-style search if needed
+tavily-python>=0.5.0
+
+# ---- RAG stack ----
+# Vector store
+langchain-chroma>=1.1.0
+chromadb>=0.6.0
+
+# Embeddings (modern package, NOT langchain_community.embeddings)
+langchain-huggingface
+sentence-transformers>=3.3.0
+
+# Semantic chunking — lives in langchain-experimental
+# NOTE: this package is officially being sunset by the LangChain team.
+# It still installs/works (pinned below), but plan a migration later
+# (e.g. to a maintained standalone semantic-chunking lib).
+langchain-experimental>=0.4.2
+
+# ---- Structured output / data validation ----
+pydantic
+
+# ---- UI ----
+streamlit>=1.40.0
+
+# ---- Observability / tracing ----
+logfire>=3.5.0
+
+# ---- Env management ----
+python-dotenv>=1.0.1
+
+# ---- Utilities ----
+requests>=2.32.0
+tenacity>=9.0.0          # used internally by langchain for retries; explicit pin avoids surprises
+
+# ---- Optional: PDF/doc ingestion for your RAG knowledge base ----
+pypdf>=5.1.0
+unstructured>=0.16.0     # if you plan to ingest mixed doc types (html, docx, etc.) for Nepal travel KB

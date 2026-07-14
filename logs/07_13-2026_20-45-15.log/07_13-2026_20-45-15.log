@@ -1,0 +1,184 @@
+[2026-07-13 20:45:15,644] 31 src.config.config - INFO - CONFIG INITIALIZED
+[2026-07-13 20:45:18,195] 177 src.agent.agent - INFO - Using Postgres checkpointer (pooled)
+[2026-07-13 20:45:18,214] 199 src.agent.agent - INFO - Travel agent initialized (collector + tools-free report agent)
+[2026-07-13 20:45:58,833] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:46:04,648] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:46:10,298] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:46:16,661] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:46:37,782] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:46:40,388] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:46:42,409] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:46:46,227] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:46:46,248] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 20:46:46,320] 58 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 20:46:48,000] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:46:58,688] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:46:58,733] 73 src.agent.agent - INFO - Agent turn completed
+[2026-07-13 20:46:58,735] 92 src.core.planner - INFO - Tool Used: get_weather_forecast | Args: {'city': 'Kathmandu', 'days': 4}
+[2026-07-13 20:46:58,735] 92 src.core.planner - INFO - Tool Used: search_hotels | Args: {'place': 'Kathmandu'}
+[2026-07-13 20:46:58,735] 92 src.core.planner - INFO - Tool Used: search_attractions | Args: {'place': 'Kathmandu'}
+[2026-07-13 20:46:58,735] 92 src.core.planner - INFO - Tool Used: search_restaurants | Args: {'place': 'Kathmandu'}
+[2026-07-13 20:46:58,735] 92 src.core.planner - INFO - Tool Used: search_activities | Args: {'place': 'Kathmandu'}
+[2026-07-13 20:46:58,735] 92 src.core.planner - INFO - Tool Used: search_transportation | Args: {'place': 'Kathmandu'}
+[2026-07-13 20:46:58,735] 92 src.core.planner - INFO - Tool Used: final_recommendation | Args: {'query': 'Kathmandu travel recommendations'}
+[2026-07-13 20:46:58,735] 92 src.core.planner - INFO - Tool Used: convert_currency | Args: {'amount': '1000', 'from_currency': 'USD', 'to_currency': 'INR'}
+[2026-07-13 20:46:59,142] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:46:59,498] 58 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 20:47:02,924] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:47:02,962] 73 src.agent.agent - INFO - Agent turn completed
+[2026-07-13 20:47:04,708] 134 src.core.planner - INFO - Generating structured TravelPlan
+[2026-07-13 20:47:06,976] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:47:08,159] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:52:56,109] 1785 asyncio - ERROR - Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Bibek\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Bibek\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+[2026-07-13 20:52:56,896] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:53:07,836] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:53:10,639] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:53:16,113] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:53:21,442] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:53:23,866] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:53:25,727] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:53:28,086] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 20:53:28,111] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 20:53:28,141] 58 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 20:53:29,009] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:53:31,801] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:53:34,017] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:53:36,339] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:53:36,341] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+[2026-07-13 20:53:37,441] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:53:37,443] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+[2026-07-13 20:53:39,486] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:53:44,036] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:53:44,036] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 17.000000 seconds
+[2026-07-13 20:54:01,666] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:54:03,705] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:54:03,705] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 21.000000 seconds
+[2026-07-13 20:54:25,746] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:54:30,512] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:54:30,512] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 19.000000 seconds
+[2026-07-13 20:54:50,273] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:54:52,202] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:54:52,203] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 24.000000 seconds
+[2026-07-13 20:55:19,479] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:55:21,001] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:55:21,002] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 23.000000 seconds
+[2026-07-13 20:55:44,623] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:55:46,795] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:55:46,796] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 27.000000 seconds
+[2026-07-13 20:56:14,928] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:56:16,654] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:56:16,656] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 27.000000 seconds
+[2026-07-13 20:56:45,060] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:56:47,486] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:56:47,487] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 29.000000 seconds
+[2026-07-13 20:57:17,403] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:57:19,147] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:57:19,147] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 30.000000 seconds
+[2026-07-13 20:57:50,319] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:58:07,104] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:58:07,105] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 15.000000 seconds
+[2026-07-13 20:58:23,661] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:58:25,211] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:58:25,211] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 31.000000 seconds
+[2026-07-13 20:58:57,207] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:59:14,202] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:59:14,202] 1068 groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 19.000000 seconds
+[2026-07-13 20:59:34,174] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-07-13 20:59:36,667] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 20:59:36,670] 109 src.agent.agent - ERROR - Error in collector_agent: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksq729j8enw8dv4x7k1j0482` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98257, Requested 7515. Please try again in 1h23m7.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[2026-07-13 20:59:36,670] 148 src.core.planner - ERROR - Failed to generate itinerary
+Traceback (most recent call last):
+  File "D:\TripNepal\src\core\planner.py", line 77, in create_itinerary
+    raise RuntimeError(f"Collector agent failed: {collected['error']}")
+RuntimeError: Collector agent failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksq729j8enw8dv4x7k1j0482` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98257, Requested 7515. Please try again in 1h23m7.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[2026-07-13 21:00:59,610] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:09,890] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:12,316] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:22,492] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:24,669] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:28,129] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:33,006] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:34,569] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:36,989] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:38,557] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:01:38,572] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 21:01:38,594] 58 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 21:01:38,939] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+[2026-07-13 21:01:38,939] 109 src.agent.agent - ERROR - Error in collector_agent: Error code: 400 - {'error': {'message': 'tool call validation failed: parameters for tool get_weather_forecast did not match schema: errors: [`/days`: expected integer, but got string]', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=get_weather_forecast>{"city": "Kathmandu", "days": "3"}</function>\n'}}
+[2026-07-13 21:01:38,939] 148 src.core.planner - ERROR - Failed to generate itinerary
+Traceback (most recent call last):
+  File "D:\TripNepal\src\core\planner.py", line 77, in create_itinerary
+    raise RuntimeError(f"Collector agent failed: {collected['error']}")
+RuntimeError: Collector agent failed: Error code: 400 - {'error': {'message': 'tool call validation failed: parameters for tool get_weather_forecast did not match schema: errors: [`/days`: expected integer, but got string]', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=get_weather_forecast>{"city": "Kathmandu", "days": "3"}</function>\n'}}
+[2026-07-13 21:02:15,023] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:02:24,811] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:02:27,169] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:02:31,716] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:02:53,530] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:02:56,145] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:02:59,517] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:03:03,017] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:03:03,776] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:03:12,548] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:03:14,745] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:03:14,776] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 21:03:14,804] 58 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 21:03:14,930] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 21:03:14,936] 109 src.agent.agent - ERROR - Error in collector_agent: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksq729j8enw8dv4x7k1j0482` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99500, Requested 1426. Please try again in 13m20.064s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[2026-07-13 21:03:14,936] 148 src.core.planner - ERROR - Failed to generate itinerary
+Traceback (most recent call last):
+  File "D:\TripNepal\src\core\planner.py", line 77, in create_itinerary
+    raise RuntimeError(f"Collector agent failed: {collected['error']}")
+RuntimeError: Collector agent failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksq729j8enw8dv4x7k1j0482` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99500, Requested 1426. Please try again in 13m20.064s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[2026-07-13 21:04:34,577] 1785 asyncio - ERROR - Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Bibek\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Bibek\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+[2026-07-13 21:04:35,319] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:04:39,173] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:04:42,633] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:04:43,236] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:04:46,353] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:04:49,656] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:04:52,225] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:04:55,523] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:04:59,267] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:02,259] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:07,666] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:07,676] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 21:05:07,701] 58 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 21:05:07,848] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 21:05:07,848] 109 src.agent.agent - ERROR - Error in collector_agent: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksq729j8enw8dv4x7k1j0482` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99369, Requested 1398. Please try again in 11m2.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[2026-07-13 21:05:07,848] 148 src.core.planner - ERROR - Failed to generate itinerary
+Traceback (most recent call last):
+  File "D:\TripNepal\src\core\planner.py", line 77, in create_itinerary
+    raise RuntimeError(f"Collector agent failed: {collected['error']}")
+RuntimeError: Collector agent failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksq729j8enw8dv4x7k1j0482` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99369, Requested 1398. Please try again in 11m2.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[2026-07-13 21:05:35,045] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:39,466] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:41,934] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:50,148] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:51,960] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:54,947] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:57,200] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:58,155] 92 opentelemetry.instrumentation.instrumentor - WARNING - Attempting to instrument while already instrumented
+[2026-07-13 21:05:58,163] 40 src.core.planner - INFO - Travel Planner initialized
+[2026-07-13 21:05:58,187] 58 src.agent.agent - INFO - Agent Turn Started (History: 1 messages)
+[2026-07-13 21:05:58,310] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[2026-07-13 21:05:58,310] 109 src.agent.agent - ERROR - Error in collector_agent: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksq729j8enw8dv4x7k1j0482` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99311, Requested 1401. Please try again in 10m15.168s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[2026-07-13 21:05:58,310] 148 src.core.planner - ERROR - Failed to generate itinerary
+Traceback (most recent call last):
+  File "D:\TripNepal\src\core\planner.py", line 77, in create_itinerary
+    raise RuntimeError(f"Collector agent failed: {collected['error']}")
+RuntimeError: Collector agent failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksq729j8enw8dv4x7k1j0482` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99311, Requested 1401. Please try again in 10m15.168s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
