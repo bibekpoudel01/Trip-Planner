@@ -488,10 +488,24 @@ if plan.final_recommendations:
     for r in plan.final_recommendations:
         lines.append(f"- {r}")
 
+
 st.download_button(
-    "⬇️ Download itinerary (Markdown)",
-    data="\n".join(lines),
-    file_name=f"{plan.city.replace(' ', '_').lower()}_itinerary.md",
-    mime="text/markdown",
+    "⬇️ Download itinerary (Styled HTML)",
+    data=html_export,
+    file_name=f"{plan.city.replace(' ', '_').lower()}_itinerary.html",
+    mime="text/html",
+    use_container_width=True,
+)
+
+
+from weasyprint import HTML
+
+pdf_bytes = HTML(string=html_export).write_pdf()
+
+st.download_button(
+    "⬇️ Download itinerary (PDF)",
+    data=pdf_bytes,
+    file_name=f"{plan.city.replace(' ', '_').lower()}_itinerary.pdf",
+    mime="application/pdf",
     use_container_width=True,
 )
