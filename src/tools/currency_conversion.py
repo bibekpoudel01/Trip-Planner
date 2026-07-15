@@ -27,7 +27,7 @@ class ConvertCurrencyInput(BaseModel):
 @tool(args_schema=ConvertCurrencyInput)
 def convert_currency(amount: str, from_currency: str, to_currency: str) -> str:
     """
-    Converts an amount from one currency to another (e.g., USD to EUR).
+    Converts an amount from USD to another (e.g., USD to EUR).
     Use this for all currency conversion needs.
     """
     if not API_KEY:

@@ -138,8 +138,7 @@ Include temperature ranges, rain/cloud conditions, and practical packing advice.
 2. Hotel recommendations- name and approximate price per night for each.
 3. Day-by-day itinerary - for EACH day include:  activities, weather,
    attractions, restaurants with local food recommendations, transportation (if applicable) AND how to get between that day's locations.
-4. Currency reference - state at least one concrete conversion figure from
-   the research data, relevant to the traveler's chosen currency.
+4. Currency reference - convert the curerency from USD to destination currency and provide a reference for the traveler to use for budgeting. If no specific currency was requested, default to USD.
 5. Final recommendations and warnings - give general recommendations, and 
    separately flag any safety warnings or travel advisories found in the research.
 Note:Never Hallucinate. Be absolutely clear about what is based on the provided research data and what is a general travel recommendation. If data for a specific section is completely missing from the research, omit that section or state that no specific data was found instead of making it up.
