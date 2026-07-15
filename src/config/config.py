@@ -4,12 +4,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from src.utils.exception import CustomException
-from src.utils.logger import get_logger
 
-logger = get_logger(__name__)
+import logfire
 
 try:
+    logfire.info("Initializing configuration...")
     os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY", "")
     os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY", "")
     os.environ["TAVILY_API_KEY"] = os.getenv("TAVILY_API_KEY", "")
@@ -28,6 +27,6 @@ try:
     os.environ['AVIATIONSTACK_API_KEY']=os.getenv('AVIATIONSTACK_API_KEY')
 
 
-    logger.info("CONFIG INITIALIZED")
+    logfire.info("CONFIG INITIALIZED")
 except Exception as e:
-    raise CustomException(e, sys)
+    raise ValueError(f"Error initializing configuration: {str(e)}") from e

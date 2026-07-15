@@ -1,5 +1,6 @@
 import os
 import logging
+from chromadb import logger
 from psycopg_pool import ConnectionPool
 from psycopg.rows import dict_row
 from langgraph.checkpoint.postgres import PostgresSaver
@@ -7,7 +8,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langchain_groq import ChatGroq
 from langchain.agents import create_agent
 from langchain.agents.middleware import AgentMiddleware
-
+import logfire
 from src.tools.places_info_search import (
     search_attractions,
     search_restaurants,
@@ -20,8 +21,7 @@ from src.models.travel_models import TravelPlan
 from src.tools.weather import get_weather_forecast
 from src.tools.currency_conversion import convert_currency
 from src.tools.final_recommendation import final_recommendation
-logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+
 llm = ChatGroq(
     model="llama-3.1-8b-instant",
     temperature=0,
@@ -53,9 +53,7 @@ class TravelAgentMiddleware(AgentMiddleware):
 
     def before_agent(self, state, runtime):
         try:
-            logger.info(
-                f"Agent Turn Started (History: {len(state.get('messages', []))} messages)"
-            )
+            logfire.info(f"Agent Turn Started (History: {len(state.get('messages', []))} messages)")
             return None
         except Exception as e:
             raise Exception(f"Error in before_agent: {str(e)}") from e
@@ -68,7 +66,7 @@ class TravelAgentMiddleware(AgentMiddleware):
 
     def after_agent(self, state, runtime):
         try:
-            logger.info("Agent turn completed")
+            logfire.info("Agent turn completed")
             return None
         except Exception as e:
             raise Exception(f"Error in after_agent: {str(e)}") from e
@@ -103,7 +101,7 @@ def collector_agent(query: str):
         response = agent.invoke({"messages": [{"role": "user", "content": query}]})
         return response
     except Exception as e:
-        logger.error("Error in collector_agent: %s", e)
+        logfire.error("Error in collector_agent: {error}", error=str(e))
         return {"error": str(e)}
 
 
@@ -121,7 +119,7 @@ def title_generator(query: str) -> str:
             raise ValueError("LLM returned empty title")
         return title
     except Exception as e:
-        logger.error("Error in title_generator: %s", e)
+        logfire.error("Error in title_generator: {error}", error=str(e))
         return "Travel Report (auto-generated title unavailable)"
 
 
@@ -172,10 +170,10 @@ if DATABASE_URL:
     )
     checkpointer = PostgresSaver(_pool)
     checkpointer.setup()
-    logger.info("Using Postgres checkpointer (pooled)")
+    logfire.info("Using Postgres checkpointer (pooled)")
 else:
     checkpointer = InMemorySaver()
-    logger.warning(
+    logfire.warning(
         "DATABASE_URL not set. Using in-memory checkpointer; "
         "conversation state will reset on restart."
     )
@@ -194,4 +192,4 @@ report_agent = build_report_agent(checkpointer)
 
 
 structured_model = structuring_llm.with_structured_output(TravelPlan)
-logger.info("Travel agent initialized (collector + tools-free report agent)")
+logfire.info("Travel agent initialized (collector + tools-free report agent)")

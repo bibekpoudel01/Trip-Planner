@@ -11,9 +11,9 @@ from src.agent.agent import (
     structured_model,
     title_generator,
 )
-from src.utils.logger import get_logger
 
-logger = get_logger(__name__)
+
+import logfire
 MAX_TOOL_OUTPUT_CHARS = 1500
 
 
@@ -30,14 +30,16 @@ def _safe_truncate(content: str, limit: int = MAX_TOOL_OUTPUT_CHARS) -> str:
     except (json.JSONDecodeError, TypeError):
         pass
 
-    logger.warning(
-        "Tool output truncated: %d chars -> %d chars", len(content), limit
+    logfire.warning(
+        "Tool output truncated: {orig_len} chars -> {limit} chars",
+        orig_len=len(content),
+        limit=limit,
     )
     return content[:limit] + " ...[TRUNCATED]"
 
 class TravelPlanner:
     def __init__(self):
-        logger.info("Travel Planner initialized")
+        logfire.info("Travel Planner initialized")
 
     @logfire.instrument("create_itinerary")
     def create_itinerary(
@@ -82,6 +84,7 @@ class TravelPlanner:
             collected_messages = collected.get("messages", [])
             tool_calls = []
             retrieval_context = []
+            
 
             for msg in collected_messages:
                 if isinstance(msg, AIMessage) and getattr(msg, "tool_calls", None):
@@ -92,10 +95,10 @@ class TravelPlanner:
                                 "args": tc["args"],
                             }
                         )
-                        logger.info(
-                            "Tool Used: %s | Args: %s",
-                            tc["name"],
-                            tc["args"],
+                        logfire.info(
+                            "Tool Used: {tool_name} | Args: {tool_args}",
+                            tool_name=tc["name"],
+                            tool_args=tc["args"],
                         )
                 elif isinstance(msg, ToolMessage):
                     tool_name = getattr(msg, "name", "unknown_tool")
@@ -135,7 +138,7 @@ class TravelPlanner:
                 + "\n\n---\n\n".join(retrieval_context)
             )
 
-            logger.info("Generating structured TravelPlan")
+            logfire.info("Generating structured TravelPlan")
             structured_itinerary = structured_model.invoke(structuring_input)
             
 
@@ -149,5 +152,5 @@ class TravelPlanner:
             }
 
         except Exception:
-            logger.exception("Failed to generate itinerary")
+            logfire.exception("Failed to generate itinerary")
             raise
